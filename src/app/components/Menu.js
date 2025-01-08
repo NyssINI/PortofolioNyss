@@ -1,7 +1,7 @@
 "use client";
 import React, {useState, useRef, UseEffect} from "react";
 import Link from "next/link";
-import "./Menu.css";
+
 
 const menuLink = [
     {path: "/", label: "Home"},

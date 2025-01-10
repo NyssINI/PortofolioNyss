@@ -6,8 +6,7 @@
 }
 
 body {
-    font-family: "Saans TRIAL";
-    background-color: #000;
+    font-family: "Saans TRIAL";     
 }
 
 a , p {
@@ -19,10 +18,26 @@ a , p {
     line-height: 100%;
 }
 
-.page-content {
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    padding: 6rem 2rem;
+.menu-container {
+   background-color: #6699CC;
 }
+
+h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:5vw;
+    letter-spacing: -0.04em;
+    color: #000;
+}
+
+h1 sup {
+    position: relative;
+    top: -20px;
+    left: 10px;
+    font-size: 1.5vw;
+    letter-spacing: 0;
+}
+
 

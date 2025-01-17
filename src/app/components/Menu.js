@@ -33,7 +33,7 @@ const Menu = () => {
         {/* Overlay Bar */}
         <div className="menu-overlay-bar">
           <div className="menu-logo">
-            <Link href="/">Codegrid</Link>
+
           </div>
           <div className="menu-close-icon" onClick={toggleMenu}>
             <p>&#x2715;</p>

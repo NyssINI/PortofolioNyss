@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
 const menuLink = [
@@ -23,6 +23,8 @@ const Menu = () => {
         <div className="menu-logo">
           <Link href="/">return: Nyss;</Link>
         </div>
+        
+        {/* Burger Button */}
         <div className="menu-open" onClick={toggleMenu}>
           <p>Menu</p>
         </div>
@@ -30,10 +32,9 @@ const Menu = () => {
 
       {/* Menu Overlay */}
       <div className={`menu-overlay ${isMenuOpen ? "open" : ""}`}>
-        {/* Overlay Bar */}
         <div className="menu-overlay-bar">
           <div className="menu-logo">
-
+            {/* Optional Logo or Content */}
           </div>
           <div className="menu-close-icon" onClick={toggleMenu}>
             <p>&#x2715;</p>

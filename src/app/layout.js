@@ -1,6 +1,10 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Loading from "./components/Loading"; // Impor komponen Loading
+import Menu from "./components/Menu"; // Impor Menu komponen
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Menu from "./components/Menu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,19 +16,33 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const Metadata = {
   title: "Nyss Portofolio",
   description: "return Nyss;",
 };
 
-export default function RootLayout({ children }) {
+export default function Layout({ children }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false); // Setelah 3 detik, set loading menjadi false
+    }, 3000); // Waktu loading screen, 3 detik
+
+    return () => clearTimeout(timer); // Bersihkan timer ketika komponen unmount
+  }, []);
+
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Menu />
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {isLoading ? (
+          <Loading /> // Tampilkan loading screen selama isLoading true
+        ) : (
+          <>
+            <Menu />
+            {children}
+          </>
+        )}
       </body>
     </html>
   );

@@ -5,8 +5,8 @@ import "./Loading.css";
 import { gsap } from "gsap";
 
 const Loading = () => {
-  const [text, setText] = useState("");
   const fullText = "Welcome.";
+  const [text, setText] = useState("");
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -17,11 +17,18 @@ const Loading = () => {
       } else {
         clearInterval(intervalId);
 
-        gsap.to(".curtain, .loading-text", {
-          y: "-=100vh",
+        // GSAP animation for hiding the loading screen
+        gsap.to(".loading-container", {
+          opacity: 0,
           duration: 1.5,
           ease: "power3.out",
-          opacity: 0
+          onComplete: () => {
+            // Optional: You can remove the element after the animation is done
+            const loadingElement = document.querySelector(".loading-container");
+            if (loadingElement) {
+              loadingElement.style.display = "none";
+            }
+          },
         });
       }
     }, 300);
@@ -31,7 +38,7 @@ const Loading = () => {
 
   return (
     <div className="loading-container">
-      <div className="curtain"></div> 
+      <div className="curtain"></div>
       <h1 className="loading-text">{text}</h1>
     </div>
   );

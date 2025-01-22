@@ -2,12 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { gsap } from "gsap";
-import { useRouter } from "next/navigation"; 
-import "./components/Loading.css"; 
+import Link from 'next/link'; // Import Link here
 
 const Home = () => {
   const [isLoadingComplete, setIsLoadingComplete] = useState(false); 
-  const router = useRouter(); 
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -19,32 +17,27 @@ const Home = () => {
 
   useEffect(() => {
     if (isLoadingComplete) {
-      const letters = document.querySelectorAll(".animated-letter");
-
-      gsap.fromTo(letters, 
-        { opacity: 0 }, 
-        { 
-          opacity: 1, 
-          duration: 1, 
-          stagger: 0.2, 
-          delay: 1, 
-          repeat: -1, 
-          yoyo: true,
-        }
-      );
+      const tl = gsap.timeline();
+      tl.set(".animated-letter", { opacity: 0 })
+        .to(".animated-letter", {
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          delay: 0.5,
+        });
     }
-  }, [isLoadingComplete]); 
+  }, [isLoadingComplete]);
 
   return (
-    <div style={{ textAlign: "center", padding: "50px" }}>
-      {/* Name Animation */}
-      <h1>
+    <div className="menu-container">
+      {/* Animated Name Section */}
+      <h3 className="animated-name">
         <span className="animated-letter">D</span>
         <span className="animated-letter">e</span>
         <span className="animated-letter">n</span>
         <span className="animated-letter">y</span>
         <span className="animated-letter">s</span>
-        {" | "}
+        <span>&nbsp;</span>
         <span className="animated-letter">Y</span>
         <span className="animated-letter">u</span>
         <span className="animated-letter">d</span>
@@ -55,7 +48,23 @@ const Home = () => {
         <span className="animated-letter">a</span>
         <span className="animated-letter">r</span>
         <span className="animated-letter">a</span>
-      </h1>
+    </h3>
+
+      
+      {/* Subtitle Section */}
+      <p className="subtitle">
+        — Web Developer | Designer —
+      </p>
+
+      {/* Button Section */}
+      <div className="flex justify-center pt-5">
+        <Link
+          href="#about"
+          className="button-start-explore"
+        >
+          Start Explore
+        </Link>
+      </div>
     </div>
   );
 };

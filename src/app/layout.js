@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Loading from "./components/Loading"; // Impor komponen Loading
-import Menu from "./components/Menu"; // Impor Menu komponen
+import Menu from "./components/Menu"; // Impor komponen Menu
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -26,20 +26,20 @@ export default function Layout({ children }) {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false); // Setelah 3 detik, set loading menjadi false
-    }, 3000); // Waktu loading screen, 3 detik
+      setIsLoading(false); 
+    }, 3000); // Durasi loading (3 detik)
 
-    return () => clearTimeout(timer); // Bersihkan timer ketika komponen unmount
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {isLoading ? (
-          <Loading /> // Tampilkan loading screen selama isLoading true
+          <Loading /> 
         ) : (
           <>
-            <Menu />
+            <Menu showMenu={!isLoading} />
             {children}
           </>
         )}

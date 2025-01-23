@@ -2,9 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import { gsap } from "gsap";
-import Link from 'next/link'; // Import Link here
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import Link from 'next/link'; 
 
 const Home = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const [isLoadingComplete, setIsLoadingComplete] = useState(false); 
 
   useEffect(() => {
@@ -51,20 +56,20 @@ const Home = () => {
     </h3>
 
       
-      {/* Subtitle Section */}
-      <p className="subtitle">
+     {/* Subtitle Section */}
+      <p className="subtitle" data-aos="zoom-in"  data-aos-duration="3000"> 
         — Web Developer | Designer —
       </p>
 
-      {/* Button Section */}
-      <div className="flex justify-center pt-5">
+    {/* Button Section */}
+      <div className="flex justify-center pt-5" data-aos="zoom-in"  data-aos-duration="3000">
         <Link
-          href="#about"
+          href="about"
           className="button-start-explore"
-        >
+         >
           Start Explore
         </Link>
-      </div>
+      </div>    
     </div>
   );
 };

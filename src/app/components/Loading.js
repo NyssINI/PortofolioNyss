@@ -17,13 +17,11 @@ const Loading = () => {
       } else {
         clearInterval(intervalId);
 
-        // GSAP animation for hiding the loading screen
         gsap.to(".loading-container", {
           opacity: 0,
           duration: 1.5,
           ease: "power3.out",
           onComplete: () => {
-            // Optional: You can remove the element after the animation is done
             const loadingElement = document.querySelector(".loading-container");
             if (loadingElement) {
               loadingElement.style.display = "none";

@@ -6,7 +6,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Link from 'next/link'; 
 
-const Home = () => {
+const className= "home-page",Home = () => {
   useEffect(() => {
     AOS.init();
   }, []);
